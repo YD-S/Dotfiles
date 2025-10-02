@@ -1,0 +1,25 @@
+# ~/.config/betterlockscreenrc
+
+# Display settings
+display_on=0
+span_image=false
+
+# Lock screen text
+lock_text="Type password to unlock..."
+wrongpass_text="Wrong password!"
+verifying_text="Verifying..."
+
+# Colors (Catppuccin Mocha theme)
+insidecolor=1e1e2eff
+ringcolor=89b4faff
+keyhlcolor=a6e3a1ff
+bshlcolor=f38ba8ff
+separatorcolor=00000000
+insidevercolor=89b4faff
+insidewrongcolor=f38ba8ff
+ringvercolor=a6e3a1ff
+ringwrongcolor=f38ba8ff
+verifcolor=cdd6f4ff
+wrongcolor=f38ba8ff
+timecolor=cdd6f4ff
+datecolor=cdd6f4ff

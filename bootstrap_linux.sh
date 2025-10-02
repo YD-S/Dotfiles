@@ -17,7 +17,7 @@ sudo apt install -y build-essential curl wget ca-certificates \
   libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev \
   libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev \
   libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
-  libjpeg-dev libgif-dev libtool xutils-dev
+  libjpeg-dev libgif-dev libtool xutils-dev rofi
 
 # --- 2) Install JetBrains Toolbox ---
 echo "📦 Installing JetBrains Toolbox..."
@@ -95,6 +95,7 @@ fi
 # --- 5) Stow dotfiles ---
 mkdir -p "$HOME/.config/alacritty"
 mkdir -p "$HOME/.config/sxhkd"
+mkdir -p ~/.config/rofi
 cd "$DOTFILES_DIR"
 
 # Alacritty → ~/.config/alacritty
@@ -105,6 +106,13 @@ stow --target="$HOME/.config/" starship
 
 # Keybinds (sxhkd) → ~/.config/sxhkd
 stow --target="$HOME/.config/sxhkd" keybinds
+
+# betterlockscreen
+stow --target="$HOME/.config/" betterlockscreen
+
+#rofi
+stow --target="$HOME/.config/rofi" rofi
+
 
 # Zsh config → ~/.zshrc
 ln -sf "$DOTFILES_DIR/zsh/.zshrc_linux" "$HOME/.zshrc"

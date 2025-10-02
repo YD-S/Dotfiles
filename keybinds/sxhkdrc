@@ -11,6 +11,9 @@ super + v
 super + l
     betterlockscreen -l dim &
 
+super + space
+    rofi -show drun -show-icons
+
 # --- Audio Controls ---
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
