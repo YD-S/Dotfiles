@@ -1,14 +1,29 @@
+# Environment variables
+env:
+  TERM: xterm-256color
+
+# Window settings
 window:
-  padding: { x: 8, y: 8 }
+  padding:
+    x: 12
+    y: 12
   decorations: full
   opacity: 0.95
   dynamic_padding: true
   startup_mode: Maximized
+  dynamic_title: true
+  
+  # Window class (Linux/BSD only)
+  class:
+    instance: Alacritty
+    general: Alacritty
 
+# Scrolling
 scrolling:
-  history: 10000
+  history: 15000
   multiplier: 3
 
+# Font configuration
 font:
   normal:
     family: "JetBrainsMono Nerd Font"
@@ -19,47 +34,130 @@ font:
   italic:
     family: "JetBrainsMono Nerd Font"
     style: Italic
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Bold Italic
   size: 13.5
   offset:
     x: 0
-    y: 2
+    y: 1
+  glyph_offset:
+    x: 0
+    y: 0
+  builtin_box_drawing: true
 
 draw_bold_text_with_bright_colors: true
 
+# Colors (Catppuccin Mocha)
 colors:
   primary:
-    background: '0x1e1e2e'
-    foreground: '0xcdd6f4'
-  normal:
-    black:   '0x45475a'
-    red:     '0xf38ba8'
-    green:   '0xa6e3a1'
-    yellow:  '0xf9e2af'
-    blue:    '0x89b4fa'
-    magenta: '0xf5c2e7'
-    cyan:    '0x94e2d5'
-    white:   '0xbac2de'
-  bright:
-    black:   '0x585b70'
-    red:     '0xf38ba8'
-    green:   '0xa6e3a1'
-    yellow:  '0xf9e2af'
-    blue:    '0x89b4fa'
-    magenta: '0xf5c2e7'
-    cyan:    '0x94e2d5'
-    white:   '0xa6adc8'
+    background: '#1e1e2e'
+    foreground: '#cdd6f4'
+    dim_foreground: '#7f849c'
+    bright_foreground: '#cdd6f4'
 
+  cursor:
+    text: '#1e1e2e'
+    cursor: '#f5e0dc'
+
+  vi_mode_cursor:
+    text: '#1e1e2e'
+    cursor: '#b4befe'
+
+  search:
+    matches:
+      foreground: '#1e1e2e'
+      background: '#a6adc8'
+    focused_match:
+      foreground: '#1e1e2e'
+      background: '#a6e3a1'
+
+  hints:
+    start:
+      foreground: '#1e1e2e'
+      background: '#f9e2af'
+    end:
+      foreground: '#1e1e2e'
+      background: '#a6adc8'
+
+  selection:
+    text: '#1e1e2e'
+    background: '#f5e0dc'
+
+  normal:
+    black: '#45475a'
+    red: '#f38ba8'
+    green: '#a6e3a1'
+    yellow: '#f9e2af'
+    blue: '#89b4fa'
+    magenta: '#f5c2e7'
+    cyan: '#94e2d5'
+    white: '#bac2de'
+
+  bright:
+    black: '#585b70'
+    red: '#f38ba8'
+    green: '#a6e3a1'
+    yellow: '#f9e2af'
+    blue: '#89b4fa'
+    magenta: '#f5c2e7'
+    cyan: '#94e2d5'
+    white: '#a6adc8'
+
+  dim:
+    black: '#45475a'
+    red: '#f38ba8'
+    green: '#a6e3a1'
+    yellow: '#f9e2af'
+    blue: '#89b4fa'
+    magenta: '#f5c2e7'
+    cyan: '#94e2d5'
+    white: '#bac2de'
+
+# Bell
+bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: '#f9e2af'
+
+# Selection
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+# Cursor
 cursor:
   style:
     shape: Beam
-    blinking: Always
-  blink_interval: 500
+    blinking: On
+  blink_interval: 750
+  blink_timeout: 5
+  unfocused_hollow: true
+  thickness: 0.15
 
+# Live config reload
 live_config_reload: true
 
-selection:
-  save_to_clipboard: true
+# Mouse bindings
+mouse:
+  hide_when_typing: true
 
-key_bindings:
-  - { key: V, mods: Control|Shift, action: Paste }
-  - { key: C, mods: Control|Shift, action: Copy }
+mouse_bindings:
+  - { mouse: Right, action: PasteSelection }
+  - { mouse: Middle, action: PasteSelection }
+
+# Key bindings
+keyboard:
+  bindings:
+    # Clipboard
+    - { key: V, mods: Control|Shift, action: Paste }
+    - { key: C, mods: Control|Shift, action: Copy }
+    
+    # Font size
+    - { key: Key0, mods: Control, action: ResetFontSize }
+    - { key: Plus, mods: Control, action: IncreaseFontSize }
+    - { key: Minus, mods: Control, action: DecreaseFontSize }
+    
+    # Window
+    - { key: Return, mods: Alt, action: ToggleFullscreen }
+    - { key: N, mods: Control|Shift, action: CreateNewWindow }

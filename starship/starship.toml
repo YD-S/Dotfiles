@@ -1,106 +1,121 @@
 # ~/.config/starship.toml
 
 add_newline = false
-command_timeout = 1000
-format = """$os$username$hostname$kubernetes$directory$git_branch$git_status"""
+command_timeout = 2000
 
-# Drop ugly default prompt characters
+format = """
+$os$username$hostname\
+$directory\
+$git_branch$git_status\
+$kubernetes$docker_context\
+$nodejs$java$golang$python$c$rust\
+$cmd_duration
+$character
+"""
+
 [character]
-success_symbol = ''
-error_symbol = ''
+success_symbol = "[❯](bold green) "
+error_symbol = "[❯](bold red) "
+vicmd_symbol = "[❮](bold yellow) "
 
-# ---
+[cmd_duration]
+min_time = 2000
+format = " ⏱ [$duration]($style)"
+style = "bold yellow"
 
 [os]
-format = '[$symbol](bold white) '   
+format = "[$symbol](bold #fe4200) "
 disabled = false
-
 [os.symbols]
-Windows = ' '
-Arch = '󰣇'
-Ubuntu = ''
-Macos = '󰀵'
+Windows = " "
+Arch = "󰣇 "
+Ubuntu = " "
+Macos = "󰀵 "
 
-# ---y
-
-# Shows the username
 [username]
-style_user = 'white bold'
-style_root = 'black bold'
-format = '[$user]($style) '
-disabled = false
+format = "[$user]($style) "
+style_user = "bold blue"
+style_root = "bold red"
 show_always = true
 
-# Shows the hostname
 [hostname]
 ssh_only = false
-format = 'on [$hostname](bold yellow) '
+format = "on [$hostname]($style) "
+style = "bold yellow"
 disabled = false
 
-# Shows current directory
 [directory]
-truncation_length = 1
-truncation_symbol = '…/'
-home_symbol = '󰋜 ~'
-read_only_style = '197'
-read_only = '  '
-format = 'at [$path]($style)[$read_only]($read_only_style) '
+format = "📂 [$path]($style) "
+style = "bold fg:blue"
+truncation_length = 2
+truncation_symbol = "…/"
+home_symbol = "󰋜 ~"
+read_only = " "
+read_only_style = "bold red"
 
-# Shows current git branch
 [git_branch]
-symbol = ' '
-format = 'via [$symbol$branch ]($style)'
-# truncation_length = 4
-truncation_symbol = '…/'
-style = 'bold green'
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bold cyan"
 
-# Shows current git status
 [git_status]
-format = '[$all_status$ahead_behind]($style) '
-style = 'bold green'
-conflicted = '🏳'
-up_to_date = ''
-untracked = ' '
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-stashed = ' '
-modified = ' '
-staged = '[++\($count\)](green)'
-renamed = '襁 '
-deleted = ' '
+format = '([$all_status$ahead_behind]($style)) '
+style = "cyan"
+conflicted = "⚡"
+up_to_date = "✔"
+untracked = ""
+ahead = "⇡${count}"
+diverged = "⇕"
+behind = "⇣${count}"
+stashed = ""
+modified = ""
+staged = ""
+renamed = "襁"
+deleted = ""
 
-# Shows kubernetes context and namespace
 [kubernetes]
-format = 'via [󱃾 $context\($namespace\)](bold purple) '
+symbol = "󱃾 "
+format = "on [$symbol$context( $namespace)](bold purple) "
 disabled = false
-
-[c]
-symbol = '󰌓 '
-disabled = false
-
-# ---
-
-[vagrant]
-disabled = true
 
 [docker_context]
-disabled = true
-
-[helm]
-disabled = true
-
-[python]
-symbol = "󰼯 "
+symbol = " "
+format = "via [$symbol$context]($style) "
+style = "bold blue"
 disabled = false
 
 [nodejs]
-disabled = true
+symbol = " "
+format = "[$symbol$version](bold green) "
+detect_files = ["package.json", "node_modules"]
+disabled = false
 
-[ruby]
-disabled = true
+[java]
+symbol = " "
+format = "[$symbol$version](bold red) "
+detect_files = ["pom.xml", "build.gradle"]
+disabled = false
 
-[terraform]
-disabled = true
+[golang]
+symbol = " "
+format = "[$symbol$version](bold cyan) "
+detect_files = ["go.mod"]
+disabled = false
 
-command_timeout = 1000
+[python]
+symbol = "󰼯 "
+format = "[$symbol$version](bold blue) "
+detect_files = ["requirements.txt", "pyproject.toml", "Pipfile"]
+disabled = false
+
+[c]
+symbol = " "
+format = "[$symbol$version](bold yellow) "
+detect_extensions = ["c", "cpp", "h", "hpp"]
+disabled = false
+
+[rust]
+symbol = " "
+format = "[$symbol$version](bold red) "
+detect_files = ["Cargo.toml"]
+disabled = false

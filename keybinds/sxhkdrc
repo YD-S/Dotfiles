@@ -1,15 +1,17 @@
+# --- Applications ---
 super + Return
     alacritty
 
 super + b
     firefox
 
-super + e
+super + v
     code
 
 super + l
-    i3lock -c 000000
+    betterlockscreen -l dim &
 
+# --- Audio Controls ---
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
 
@@ -18,3 +20,21 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# --- JetBrains IDEs ---
+IDE_DIR="$HOME/.local/bin"
+
+super + c
+    $IDE_DIR/clion &
+
+super + y
+    $IDE_DIR/pycharm &
+
+super + f
+    $IDE_DIR/fleet &
+
+super + i
+    $IDE_DIR/idea &
+
+super + w
+    $IDE_DIR/webstorm &
