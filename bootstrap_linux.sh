@@ -173,7 +173,7 @@ if [ ! -f "$AUTOSTART_DIR/sxhkd.desktop" ]; then
   cat > "$AUTOSTART_DIR/sxhkd.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Exec=sxhkd &
+Exec=sxhkd
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
