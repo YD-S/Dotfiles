@@ -198,10 +198,6 @@ Icon=keyboard
 EOF
 fi
 
-if ! grep -q "sxhkd" "$HOME/.zprofile" 2>/dev/null; then
-  echo 'pgrep -x sxhkd > /dev/null || sxhkd &' >> "$HOME/.zprofile"
-fi
-
 # --- 12) Install JetBrains Nerd Font manually ---
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts
