@@ -1,41 +1,41 @@
 # --- Applications ---
 super + Return
-    alacritty
+	alacritty
 
 super + b
-    firefox
+	firefox
 
 super + v
-    code
+	code
 
 super + l
-    betterlockscreen -l dim
+	betterlockscreen -l dim
 
 super + space
-    rofi -show drun -show-icons
+	rofi -show drun -show-icons
 
 # --- Audio Controls ---
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +5%
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -5%
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # --- JetBrains IDEs ---
 super + c
-    /home/royale/.local/share/JetBrains/Toolbox/scripts/clion
+	/home/royale/.local/share/JetBrains/Toolbox/scripts/clion
 
 super + y
-    /home/royale/.local/share/JetBrains/Toolbox/scripts/pycharm
+	/home/royale/.local/share/JetBrains/Toolbox/scripts/pycharm
 
 super + f
-    /home/royale/.local/share/JetBrains/Toolbox/scripts/fleet
+	/home/royale/.local/share/JetBrains/Toolbox/scripts/fleet
 
 super + i
-    /home/royale/.local/share/JetBrains/Toolbox/scripts/idea
+	/home/royale/.local/share/JetBrains/Toolbox/scripts/idea
 
 super + w
-    /home/royale/.local/share/JetBrains/Toolbox/scripts/webstorm
+	/home/royale/.local/share/JetBrains/Toolbox/scripts/webstorm
