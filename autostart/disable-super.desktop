@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/$USER/.config/autostart-scripts/disable-super.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Disable Super Key in GNOME
+Comment=Free the Super key for sxhkd

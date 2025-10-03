@@ -17,7 +17,7 @@ sudo apt install -y build-essential curl wget ca-certificates \
   libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev \
   libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev \
   libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
-  libjpeg-dev libgif-dev libtool xutils-dev rofi
+  libjpeg-dev libgif-dev libtool xutils-dev rofi xautolock
 
 # --- 2) Install JetBrains Toolbox ---
 echo "📦 Installing JetBrains Toolbox..."
@@ -95,7 +95,9 @@ fi
 # --- 5) Stow dotfiles ---
 mkdir -p "$HOME/.config/alacritty"
 mkdir -p "$HOME/.config/sxhkd"
-mkdir -p ~/.config/rofi
+mkdir -p "$HOME/.config/rofi"
+mkdir -p "$HOME/.config/autostart"
+mkdir -p "$HOME/.config/autostart-scripts"
 cd "$DOTFILES_DIR"
 
 # Alacritty → ~/.config/alacritty
@@ -113,6 +115,11 @@ stow --target="$HOME/.config/" betterlockscreen
 #rofi
 stow --target="$HOME/.config/rofi" rofi
 
+#autostart
+stow --target="$HOME/.config/autostart" autostart
+
+#autostart
+stow --target="$HOME/.config/autostart-scripts" autostart-scripts
 
 # Zsh config → ~/.zshrc
 ln -sf "$DOTFILES_DIR/zsh/.zshrc_linux" "$HOME/.zshrc"
@@ -202,5 +209,22 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsM
 unzip -o JetBrainsMono.zip
 rm JetBrainsMono.zip
 fc-cache -fv
+
+# --- 13) Add autolock to autostart
+AUTOSTART_DIR="$HOME/.config/autostart"
+mkdir -p "$AUTOSTART_DIR"
+
+if [ ! -f "$AUTOSTART_DIR/betterlockscreen-autolock.desktop" ]; then
+  cat > "$AUTOSTART_DIR/betterlockscreen-autolock.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=BetterLockscreen Auto Lock
+Exec=xautolock -time 1 -locker "betterlockscreen -l" -detectsleep
+X-GNOME-Autostart-enabled=true
+Terminal=false
+Comment=Automatically locks screen after 1 minute idle
+EOF
+fi
+
 
 echo "✅ Linux setup complete! Restart your session."
