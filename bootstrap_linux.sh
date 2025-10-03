@@ -226,5 +226,5 @@ Comment=Automatically locks screen after 1 minute idle
 EOF
 fi
 
-
-echo "✅ Linux setup complete! Restart your session."
+echo "✅ Linux setup complete! Restarting your PC."
+sudo reboot
