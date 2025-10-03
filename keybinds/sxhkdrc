@@ -9,7 +9,7 @@ super + v
     code
 
 super + l
-    betterlockscreen -l dim &
+    betterlockscreen -l dim
 
 super + space
     rofi -show drun -show-icons
@@ -25,19 +25,17 @@ XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # --- JetBrains IDEs ---
-IDE_DIR="$HOME/.local/bin"
-
 super + c
-    $IDE_DIR/clion &
+    /home/royale/.local/share/JetBrains/Toolbox/scripts/clion
 
 super + y
-    $IDE_DIR/pycharm &
+    /home/royale/.local/share/JetBrains/Toolbox/scripts/pycharm
 
 super + f
-    $IDE_DIR/fleet &
+    /home/royale/.local/share/JetBrains/Toolbox/scripts/fleet
 
 super + i
-    $IDE_DIR/idea &
+    /home/royale/.local/share/JetBrains/Toolbox/scripts/idea
 
 super + w
-    $IDE_DIR/webstorm &
+    /home/royale/.local/share/JetBrains/Toolbox/scripts/webstorm
