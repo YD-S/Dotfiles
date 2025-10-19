@@ -2,60 +2,148 @@ configuration {
     modi: "drun";
     show-icons: true;
     display-drun: "";
-    drun-display-format: "{name}";
-    font: "JetBrainsMono Nerd Font 12";
+    drun-display-format: "{name}@<span size='small' alpha='50%'>{generic}</span>";
+    font: "SF Pro Display 14";
+    icon-theme: "Papirus";
+    drun-match-fields: "name,generic,exec,categories";
+    sort: true;
+    sorting-method: "fzf";
 }
 
 * {
-    background-color: #1e1e2eee;
-    text-color: #cdd6f4;
-    border-color: #89b4fa;
+    bg: rgba(22, 22, 28, 94%);
+    bg-blur: rgba(30, 30, 38, 90%);
+    bg-selected: rgba(60, 135, 245, 100%);
+    bg-hover: rgba(255, 255, 255, 12%);
+    
+    fg: rgba(255, 255, 255, 95%);
+    fg-secondary: rgba(255, 255, 255, 60%);
+    fg-tertiary: rgba(255, 255, 255, 40%);
+    
+    accent: rgba(60, 135, 245, 100%);
+    accent-light: rgba(100, 160, 255, 100%);
+    
+    border: rgba(255, 255, 255, 15%);
+    separator: rgba(255, 255, 255, 8%);
+    shadow: rgba(0, 0, 0, 60%);
+    
+    background-color: transparent;
+    text-color: @fg;
 }
 
 window {
-    width: 600px;
-    border: 2px;
-    border-radius: 12px;
-    padding: 20px;
+    width: 680px;
+    background-color: @bg;
+    border: 1px solid;
+    border-color: @border;
+    border-radius: 20px;
+    padding: 0px;
+    location: center;
+    anchor: center;
+    transparency: "real";
+}
+
+mainbox {
+    spacing: 0px;
+    background-color: transparent;
+    children: [inputbar, listview];
+    padding: 0px;
 }
 
 inputbar {
-    children: [prompt, entry];
-    spacing: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #181825;
+    children: [textbox-prompt-colon, entry];
+    spacing: 12px;
+    padding: 24px 28px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: transparent;
+    border: 0px;
 }
 
-prompt {
-    enabled: true;
-    font: "JetBrainsMono Nerd Font 14";
+textbox-prompt-colon {
+    expand: false;
+    str: "";
+    text-color: @fg-secondary;
+    font: "SF Pro Display 20";
+    background-color: transparent;
 }
 
 entry {
-    placeholder: "Search applications...";
+    placeholder: "Spotlight Search";
+    placeholder-color: @fg-tertiary;
+    text-color: @fg;
+    font: "SF Pro Display 16";
+    background-color: transparent;
+    cursor-color: @accent;
 }
 
 listview {
+    columns: 1;
     lines: 8;
-    spacing: 5px;
-    padding: 10px 0px;
+    spacing: 0px;
+    padding: 0px 8px 12px 8px;
+    scrollbar: false;
+    background-color: transparent;
+    dynamic: true;
 }
 
 element {
-    padding: 8px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-color: transparent;
+    text-color: @fg;
+    children: [element-icon, element-text];
+    spacing: 16px;
+    border: 0px;
+    margin: 0px 8px;
 }
 
-element selected {
-    background-color: #89b4fa40;
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.active {
+    background-color: @bg-hover;
+    text-color: @fg;
+}
+
+element selected.normal,
+element selected.active {
+    background-color: @bg-selected;
+    text-color: rgba(255, 255, 255, 100%);
+    border-radius: 8px;
 }
 
 element-icon {
-    size: 32px;
-    margin: 0px 10px 0px 0px;
+    size: 40px;
+    background-color: transparent;
 }
 
 element-text {
     vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+    font: "SF Pro Display 15";
+    markup: true;
+}
+
+element-text selected {
+    text-color: rgba(255, 255, 255, 100%);
+    font: "SF Pro Display 15";
+}
+
+message {
+    padding: 12px;
+    background-color: transparent;
+    text-color: @fg-secondary;
+}
+
+textbox {
+    text-color: @fg-secondary;
+    background-color: transparent;
 }

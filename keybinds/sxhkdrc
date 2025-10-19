@@ -3,7 +3,7 @@ super + Return
 	alacritty
 
 super + b
-	firefox
+	bash -c 'wmctrl -xa firefox || firefox'
 
 super + v
 	code
@@ -12,7 +12,10 @@ super + l
 	betterlockscreen -l dim
 
 super + space
-	rofi -show drun -show-icons
+	rofi -modi "drun,window" -show drun -show-icons
+
+super + q
+    xdotool getwindowfocus windowkill
 
 # --- Audio Controls ---
 XF86AudioRaiseVolume

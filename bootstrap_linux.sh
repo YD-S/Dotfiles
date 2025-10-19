@@ -198,8 +198,13 @@ Icon=keyboard
 EOF
 fi
 
-# --- 12) Install JetBrains Nerd Font manually ---
+# --- 12) Install JetBrains Nerd Font and SF-pro-font manually ---
+git clone https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts.git /tmp/SF
+cd /tmp/SF
 mkdir -p ~/.local/share/fonts
+cp *.otf ~/.local/share/fonts/
+rm -rf /tmp/SF
+
 cd ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
 unzip -o JetBrainsMono.zip

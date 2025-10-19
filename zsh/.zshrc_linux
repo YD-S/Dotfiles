@@ -28,3 +28,14 @@ if command -v pyenv >/dev/null 2>&1; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
 fi
+
+# --- Auto-start SSH agent and add keys ---
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)" >/dev/null
+fi
+
+# Check if keys are already added
+ssh-add -l >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+  ssh-add ~/.ssh/id_ed25519 ~/.ssh/id_ed25519_signing 2>/dev/null
+fi
