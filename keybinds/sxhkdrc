@@ -1,13 +1,4 @@
 # --- Applications ---
-super + Return
-	alacritty
-
-super + b
-	bash -c 'wmctrl -xa firefox || firefox'
-
-super + v
-	code
-
 super + l
 	betterlockscreen -l dim
 
@@ -15,7 +6,7 @@ super + space
 	rofi -modi "drun,window" -show drun -show-icons
 
 super + q
-    xdotool getwindowfocus windowkill
+    bash -c 'xdotool getwindowfocus windowclose'
 
 # --- Audio Controls ---
 XF86AudioRaiseVolume

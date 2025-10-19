@@ -2,6 +2,9 @@
 set -euo pipefail
 
 DOTFILES_DIR="${1:-$HOME/dotfiles}"
+echo "🔧 Setting up GNOME shortcuts..."
+chmod +x setup-gnome-shortcuts.sh
+bash setup-gnome-shortcuts.sh
 
 echo "🚀 Setting up Linux from $DOTFILES_DIR"
 
